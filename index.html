@@ -23,7 +23,18 @@
 
 
   <script>
-    const inputs = document.querySelectorAll('.controls input');
+    const inputs = document.querySelectorAll('.controls input'); // grabs the sliders under the "controls" class div. //
+
+    function handleUpdate() {
+      const suffix = this.dataset.sizing || ''; //sets the custom data-set sizing as the suffix because the value of spacing/blur css variables have a px suffix. // 
+      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix) // sets the style of the selected property variable using the name property and adds the custom suffix if needed. // 
+    }
+
+    inputs.forEach(input => input.addEventListener('change', handleUpdate)); // listens for a change in the controls as they are selected and runs the function //
+    inputs.forEach(input => input.addEventListener('mousemove', handleUpdate)); // listens for a change in the controls as they move and runs the function //
+
+
+
   </script>
 
 </body>
