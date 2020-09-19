@@ -1,7 +1,7 @@
 :root {
     --base: #93e9be;
     --spacing: 10px;
-    --blur: 10px; 
+    --blur: 10px;
 }
 
 img {
@@ -33,4 +33,13 @@ body {
 
 input {
     width: 100px;
+}
+
+div button {
+    flex: 1;
+    margin: 20px;
+    height: 30px;
+    width: 120px;
+    line-height: 30px;
+    border-radius: 25px;
 }

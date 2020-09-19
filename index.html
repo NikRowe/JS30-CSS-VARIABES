@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <link rel='stylesheet' href='style.css'>
   <title>Scoped CSS Variables and JS</title>
 </head>
+
 <body>
   <h2>Update CSS Variables with <span class='hl'>JS</span></h2>
 
@@ -19,23 +21,70 @@
     <input id="base" type="color" name="base" value="#ffc600">
   </div>
 
+  <div class="controls">
+    <button class="spacing" name='spacing' id='random-spacing' data-sizing='px'>Random Spacing</button>
+    <button class="blur" name='blur' id='random-blur' data-sizing='px'>Random Blur</button>
+    <button class="base" name='base'>Random Base</button>
+  </div>
+
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
 
 
   <script>
     const inputs = document.querySelectorAll('.controls input'); // grabs the sliders under the "controls" class div. //
+    const btns = document.querySelectorAll('.controls button');
+
+    function random(min, max) {
+      const num = Math.floor(Math.random() * (max - min)) + min;
+      return num;
+    }
+
+    function randomColor() {
+      return 'rgb(' + random(0, 255) + ', ' + random(0, 255) + ', ' + random(0, 255) + ')';
+    }
 
     function handleUpdate() {
-      const suffix = this.dataset.sizing || ''; //sets the custom data-set sizing as the suffix because the value of spacing/blur css variables have a px suffix. // 
-      document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix) // sets the style of the selected property variable using the name property and adds the custom suffix if needed. // 
+      const suffix = this.dataset.sizing || ''; //sets the custom data-set sizing as the suffix because the value of spacing/blur css variables have a px suffix. //
+      const newSpacing = random(10, 200);
+      const newBlur = random(0, 25) 
+
+      console.log(this)
+
+      if (this.id === 'random-spacing') {
+        document.documentElement.style.setProperty(`--${this.name}`, newSpacing + suffix)
+      } else if (this.id === 'random-blur') {
+        document.documentElement.style.setProperty(`--${this.name}`, newBlur + suffix)
+      } else {
+        document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
+      }
+
+      // sets the style of the selected property variable using the name property and adds the custom suffix if needed. // 
     }
+
+    // function setRandomSpacing() {
+    //   const suffix = this.dataset.sizing || '';
+    //   const newSpacing = random(10, 200);
+    //   const newBlur = random(0, 25)
+
+    //   document.documentElement.style.setProperty(`--${this.name}`, newSpacing + suffix)
+    // }
+
+    // function setRandomBlur() {
+    //   const suffix = this.dataset.sizing || '';
+    //   const newBlur =random(0, 25);
+    // }
+
 
     inputs.forEach(input => input.addEventListener('change', handleUpdate)); // listens for a change in the controls as they are selected and runs the function //
     inputs.forEach(input => input.addEventListener('mousemove', handleUpdate)); // listens for a change in the controls as they move and runs the function //
+    btns.forEach(btn => btn.addEventListener('click', handleUpdate));
+
+
 
 
 
   </script>
 
 </body>
+
 </html>
