@@ -49,8 +49,6 @@
       const newBlur = random(0, 25);
       const newBase = randomColor()
 
-      console.log(this)
-
       if (this.id === 'random-spacing') {
         document.documentElement.style.setProperty(`--${this.name}`, newSpacing + suffix)
       } else if (this.id === 'random-blur') {
@@ -59,9 +57,7 @@
         document.documentElement.style.setProperty(`--${this.name}`, newBase)
       } else {
         document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
-      }
-
-      // sets the style of the selected property variable using the name property and adds the custom suffix if needed. // 
+      } // sets the style of the selected property variable using the name property and adds the custom suffix if needed. // 
     }
 
 
