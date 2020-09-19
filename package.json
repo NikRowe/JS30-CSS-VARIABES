@@ -1,0 +1,24 @@
+{
+  "name": "js30-ccs-variables",
+  "version": "1.0.0",
+  "description": "css variables from Wes Bos JS 30",
+  "main": "index.js",
+  "scripts": {
+    "start": "npm run lite",
+    "lite": "lite-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NikRowe/JS30-CSS-VARIABES.git"
+  },
+  "author": "Nik Rowe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/NikRowe/JS30-CSS-VARIABES/issues"
+  },
+  "homepage": "https://github.com/NikRowe/JS30-CSS-VARIABES#readme",
+  "dependencies": {
+    "lite-server": "^2.5.4"
+  }
+}
