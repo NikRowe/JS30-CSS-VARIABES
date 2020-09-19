@@ -24,7 +24,7 @@
   <div class="controls">
     <button class="spacing" name='spacing' id='random-spacing' data-sizing='px'>Random Spacing</button>
     <button class="blur" name='blur' id='random-blur' data-sizing='px'>Random Blur</button>
-    <button class="base" name='base'>Random Base</button>
+    <button class="base" name='base' id='random-base'>Random Base</button>
   </div>
 
   <img src="https://source.unsplash.com/7bwQXzbF6KE/800x500">
@@ -46,7 +46,8 @@
     function handleUpdate() {
       const suffix = this.dataset.sizing || ''; //sets the custom data-set sizing as the suffix because the value of spacing/blur css variables have a px suffix. //
       const newSpacing = random(10, 200);
-      const newBlur = random(0, 25) 
+      const newBlur = random(0, 25);
+      const newBase = randomColor()
 
       console.log(this)
 
@@ -54,25 +55,14 @@
         document.documentElement.style.setProperty(`--${this.name}`, newSpacing + suffix)
       } else if (this.id === 'random-blur') {
         document.documentElement.style.setProperty(`--${this.name}`, newBlur + suffix)
+      } else if (this.id === 'random-base') {
+        document.documentElement.style.setProperty(`--${this.name}`, newBase)
       } else {
         document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
       }
 
       // sets the style of the selected property variable using the name property and adds the custom suffix if needed. // 
     }
-
-    // function setRandomSpacing() {
-    //   const suffix = this.dataset.sizing || '';
-    //   const newSpacing = random(10, 200);
-    //   const newBlur = random(0, 25)
-
-    //   document.documentElement.style.setProperty(`--${this.name}`, newSpacing + suffix)
-    // }
-
-    // function setRandomBlur() {
-    //   const suffix = this.dataset.sizing || '';
-    //   const newBlur =random(0, 25);
-    // }
 
 
     inputs.forEach(input => input.addEventListener('change', handleUpdate)); // listens for a change in the controls as they are selected and runs the function //
